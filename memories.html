@@ -1,0 +1,138 @@
+<!-- page3.html | Memories Gallery -->
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8" />
+    <title>Memories 📸</title>
+    <style>
+        body {
+            margin: 0;
+            background: #ffe6f5;
+            font-family: 'Poppins';
+            animation: fade 1.2s;
+        }
+
+        @keyframes fade {
+            from {
+                opacity: 0;
+            }
+
+            to {
+                opacity: 1;
+            }
+        }
+
+        .gallery {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            padding: 30px;
+            gap: 20px;
+        }
+
+        .pic {
+            width: 180px;
+            height: 220px;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 10px 25px rgba(255, 120, 160, .25);
+            overflow: hidden;
+            transform: rotate(-3deg);
+            transition: .4s;
+        }
+
+        .pic:hover {
+            transform: scale(1.1) rotate(0deg);
+        }
+    </style>
+</head>
+
+<body>
+    <h1 style="text-align:center; padding-top:30px;">Our Cute Memories 💞</h1>
+    <div class="gallery">
+        <div class="pic"
+            style="background-image:url('assets/IMG-20250824-WA0101[1].jpg');background-size:cover;background-position:center;">
+        </div>
+        <div class="pic"
+            style="background-image:url('assets/IMG-20250930-WA0130[1].jpg');background-size:cover;background-position:center;">
+        </div>
+        <div class="pic"
+            style="background-image:url('assets/IMG-20251118-WA0002[1].jpg');background-size:cover;background-position:center;">
+        </div>
+        <div class="pic"
+            style="background-image:url('assets/IMG-20251118-WA0010[1].jpg');background-size:cover;background-position:center;">
+        </div>
+    </div>
+
+    <center><button onclick="nextPage()"
+            style="padding:15px 25px;border-radius:50px;background:#ff4f9a;color:white;border:none;font-size:18px;">Next
+            ➜</button></center>
+    <script>function nextPage() { window.location.href = "reasons.html"; }
+        function initFloatingHearts(count = 10) {
+            const container = document.createElement('div');
+            container.className = 'floating-hearts';
+            for (let i = 0; i < count; i++) {
+                const hb = document.createElement('div');
+                hb.className = 'heart-bubble';
+                hb.innerHTML = '💗';
+                // random start left + delay + size
+                const left = Math.random() * 100;
+                const size = 18 + Math.random() * 36;
+                hb.style.left = left + '%';
+                hb.style.bottom = (-10 - Math.random() * 30) + 'px';
+                hb.style.width = size + 'px';
+                hb.style.height = size + 'px';
+                hb.style.fontSize = (size * 0.6) + 'px';
+                hb.style.opacity = 0.8 + Math.random() * 0.2;
+                container.appendChild(hb);
+                animateHeartUp(hb);
+            }
+            document.body.appendChild(container);
+
+            // stickers (two)
+            addFloatingSticker('🌸', '10%', '20%', 8000, 18);
+            addFloatingSticker('🎀', '84%', '30%', 9000, -18);
+        }
+
+        function animateHeartUp(el) {
+            const dur = 8000 + Math.random() * 9000;
+            const leftDrift = (Math.random() * 40 - 20);
+            el.animate([
+                { transform: `translateY(0) translateX(0) rotate(${Math.random() * 40 - 20}deg)`, opacity: el.style.opacity },
+                { transform: `translateY(-120vh) translateX(${leftDrift}px) rotate(${Math.random() * 360}deg)`, opacity: 0.05 }
+            ], { duration: dur, iterations: Infinity, easing: 'linear', delay: Math.random() * 2000 });
+        }
+
+        /* ---------- Sparkles on click ---------- */
+        function sparkleAt(cx, cy, n = 10) {
+            const parent = document.createElement('div');
+            parent.style.position = 'fixed';
+            parent.style.left = 0; parent.style.top = 0; parent.style.pointerEvents = 'none'; parent.style.zIndex = 9999;
+            document.body.appendChild(parent);
+            for (let i = 0; i < n; i++) {
+                const s = document.createElement('div');
+                s.className = 'sparkle';
+                s.style.left = (cx + (Math.random() * 80 - 40)) + 'px';
+                s.style.top = (cy + (Math.random() * 30 - 15)) + 'px';
+                s.style.width = s.style.height = (6 + Math.random() * 10) + 'px';
+                s.style.background = ['#FFD166', '#FF6AA2', '#9AD0F5', '#8BE4D4'][Math.floor(Math.random() * 4)];
+                parent.appendChild(s);
+                const dx = (Math.random() * 220 - 110);
+                const dy = (-60 - Math.random() * 220);
+                s.animate([
+                    { transform: 'translate(0,0) scale(1)', opacity: 1 },
+                    { transform: `translate(${dx}px, ${dy}px) scale(.3) rotate(${Math.random() * 360}deg)`, opacity: 0 }
+                ], { duration: 700 + Math.random() * 600, easing: 'cubic-bezier(.2,.9,.2,1)' });
+                setTimeout(() => s.remove(), 1400);
+            }
+            setTimeout(() => parent.remove(), 1600);
+        }
+
+ 
+    </script>
+    <script src="script.js"></script>
+
+</body>
+
+</html>

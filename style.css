@@ -1,0 +1,164 @@
+/* styles.css - animated princess theme */
+:root{
+  --bg1: #fff0fb;
+  --bg2: #fff8ff;
+  --accent: #ff2d95;
+  --accent2: #ff84c9;
+  --muted: #9b9b9b;
+  --card: #ffffff;
+}
+
+*{box-sizing:border-box}
+html,body{height:100%;}
+body{
+  margin:0;
+  font-family: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, Arial;
+  background: radial-gradient(1200px 600px at 10% 10%, #fff6fb 0%, rgba(255,237,250,0.5) 20%, transparent 40%),
+              linear-gradient(180deg,var(--bg1),var(--bg2));
+  -webkit-font-smoothing:antialiased;
+  -moz-osx-font-smoothing:grayscale;
+  display:flex;
+  justify-content:center;
+  padding:20px 12px;
+  overflow-x:hidden;
+}
+
+/* container card */
+.container{
+  width:100%;
+  max-width:440px;
+  border-radius:22px;
+  overflow:hidden;
+  box-shadow: 0 18px 50px rgba(20,10,30,0.15);
+  background: linear-gradient(180deg, rgba(255,255,255,0.95), rgba(255,249,253,0.9));
+  transform-origin:center;
+  animation: cardEntrance .6s cubic-bezier(.2,.9,.2,1);
+}
+@keyframes cardEntrance{
+  from{transform:translateY(20px) scale(.995);opacity:0}
+  to{transform:translateY(0) scale(1);opacity:1}
+}
+
+.header{
+  padding:18px 20px;
+  display:flex;
+  align-items:center;
+  gap:12px;
+}
+.logo{
+  width:48px;height:48px;border-radius:12px;background:linear-gradient(90deg,#ffd6e8,#ffd8f0);
+  display:flex;align-items:center;justify-content:center;font-weight:700;color:var(--accent);font-size:20px;
+  box-shadow:0 6px 18px rgba(255,45,149,0.12);
+}
+.title{font-size:16px;font-weight:700}
+.subtitle{font-size:12px;color:var(--muted)}
+
+/* card body */
+.card{
+  padding:22px;
+  text-align:center;
+  position:relative;
+  overflow:visible;
+}
+.hello{
+  font-size:26px;
+  font-weight:900;
+  color:#222;
+  margin:6px 0 6px;
+  letter-spacing:0.2px;
+}
+.note{
+  font-size:14px;color:#555;margin-bottom:18px;line-height:1.5;
+}
+
+/* big heart */
+.heart-wrap{display:flex;justify-content:center;margin:6px 0 14px}
+.heart{
+  width:108px;height:108px;border-radius:24px;display:flex;align-items:center;justify-content:center;
+  background: radial-gradient(circle at 25% 25%, #fff3f9, #ffdff2);
+  box-shadow: 0 18px 40px rgba(255,45,149,0.12);
+  transform-origin:center;
+  transition:transform .18s ease;
+}
+.heart:active{transform:scale(.98);}
+
+/* button styles with pulse */
+.btn{
+  display:inline-block;
+  padding:14px 28px;
+  border-radius:999px;
+  background:linear-gradient(90deg,var(--accent),var(--accent2));
+  color:white;
+  font-weight:800;
+  text-decoration:none;
+  box-shadow:0 16px 36px rgba(255,45,149,0.16);
+  transition:transform .12s ease, box-shadow .12s ease;
+}
+.btn:hover{transform:translateY(-4px);box-shadow:0 22px 48px rgba(255,45,149,0.22)}
+.btn:active{transform:translateY(-2px) scale(.995)}
+.btn.pulse {
+  animation: pulseShadow 2s infinite;
+}
+@keyframes pulseShadow{
+  0%{box-shadow:0 10px 26px rgba(255,45,149,0.12)}
+  50%{box-shadow:0 22px 48px rgba(255,45,149,0.22)}
+  100%{box-shadow:0 10px 26px rgba(255,45,149,0.12)}
+}
+
+/* small text */
+.small{display:block;font-size:12px;margin-top:10px;color:var(--muted)}
+
+/* typewriter */
+.typewriter{font-family:inherit;font-weight:600;color:#3a2b3a}
+
+/* grid gallery */
+.grid{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;margin-top:12px;padding:6px}
+.grid img{width:100%;height:120px;object-fit:cover;border-radius:12px;box-shadow:0 8px 18px rgba(0,0,0,0.06)}
+
+/* floating hearts (background) */
+.floating-hearts{
+  position:fixed;inset:0;pointer-events:none;z-index:2;overflow:hidden;
+}
+.heart-bubble{
+  position:absolute;width:36px;height:36px;border-radius:10px;opacity:0.85;
+  display:flex;align-items:center;justify-content:center;font-size:18px;
+  transform:translateY(0);
+  filter:drop-shadow(0 8px 14px rgba(255,45,149,0.18));
+}
+
+/* emoji rain */
+.emoji-rain{position:fixed;inset:0;pointer-events:none;z-index:3}
+
+/* sparkles */
+.sparkle{
+  position:absolute;width:10px;height:10px;border-radius:50%;
+  opacity:0.95;pointer-events:none;
+  filter:blur(.2px);
+}
+
+/* confetti container */
+.confetti{
+  position:fixed;inset:0;pointer-events:none;z-index:5;
+}
+
+/* sticker floating */
+.sticker{
+  position:absolute;width:72px;height:72px;border-radius:12px;background:linear-gradient(180deg,#fff,#ffeef8);
+  display:flex;align-items:center;justify-content:center;box-shadow:0 12px 24px rgba(20,10,30,0.08);
+  transform-origin:center;
+}
+
+/* transitions for pages (fade + slide) */
+.page-fade{
+  animation: pageFade .45s ease forwards;
+}
+@keyframes pageFade{
+  from{opacity:0; transform: translateY(8px)}
+  to{opacity:1; transform: translateY(0)}
+}
+
+/* responsive */
+@media (min-width:640px){
+  body{padding:32px}
+  .heart{width:120px;height:120px;border-radius:26px}
+}

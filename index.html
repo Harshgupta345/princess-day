@@ -1,0 +1,49 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1"/>
+  <title>Hey Princess ❤️</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body data-emoji="false">
+  <div class="container">
+    <div class="header">
+      <div class="logo">♡</div>
+      <div>
+        <div class="title">A Note for You</div>
+        <div class="subtitle">Princess Day Surprise</div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="heart-wrap">
+        <div class="heart" id="mainHeart" title="Tap me">
+          <!-- inline cute heart svg -->
+          <svg viewBox="0 0 24 24" width="64" height="64" fill="none" xmlns="https://vectordad.com/wp-content/uploads/2023/02/heart-line-art-285x300.jpg">
+            <path d="M12 21s-7.5-4.35-9.2-6.2C-0.54 11.68 3.3 6 7.6 7.2 9.6 7.9 12 10 12 10s2.4-2.1 4.4-2.8c4.3-1.2 8.13 4.48 4.8 7.6C19.5 16.65 12 21 12 21z" fill="#ff5aa9"/>
+          </svg>
+        </div>
+      </div>
+
+      <div class="hello">Hey Princess! 💕</div>
+      <div class="note">I made something special for you — open my heart to see the surprise.</div>
+
+      <a class="btn" href="open.html" id="ctaOpen">Open My Heart ✨</a>
+      <div class="small">Made with love, only for you 💌</div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+  <script>
+    // heart bounce on hover/tap
+    const heart = document.getElementById('mainHeart');
+    heart.addEventListener('pointerdown', ()=> {
+      heart.animate([{transform:'scale(1)'},{transform:'scale(1.08)'},{transform:'scale(1)'}],{duration:420,easing:'cubic-bezier(.2,.9,.2,1)'});
+      // sparkle at heart center
+      const rect = heart.getBoundingClientRect();
+      sparkleAt(rect.left + rect.width/2, rect.top + rect.height/2, 10);
+    });
+  </script>
+</body>
+</html>

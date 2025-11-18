@@ -1,0 +1,43 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8"/><meta name="viewport" content="width=device-width,initial-scale=1"/>
+  <title>Open My Heart</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    .open-card{display:flex;flex-direction:column;align-items:center;gap:10px;padding:28px}
+    .open-btn{padding:16px 28px;border-radius:999px;background:#fff;color:var(--accent);border:3px solid rgba(255,45,149,0.12);font-weight:800}
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="card open-card">
+      <div class="logo">♡</div>
+      <h2 class="hello">Tap to Open ❤️</h2>
+      <p class="note">Hold for extra sparkles — I saved something sweet inside.</p>
+
+      <button id="openBtn" class="open-btn">Open My Heart</button>
+      <div style="font-size:13px;color:var(--muted);margin-top:8px">Tap and hold for extra sparkle ✨</div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+  <script>
+    const btn = document.getElementById('openBtn');
+    let press;
+    btn.addEventListener('pointerdown', (e)=>{
+      spark = setInterval(()=> sparkleAt(e.clientX + (Math.random()*40-20), e.clientY + (Math.random()*40-20), 6), 250);
+      btn.animate([{transform:'scale(1)'},{transform:'scale(1.06)'},{transform:'scale(1)'}],{duration:520});
+    });
+    btn.addEventListener('pointerup', ()=> {
+      clearInterval(spark);
+      // go next
+      setTimeout(()=> location.href='letter.html', 260);
+    });
+    btn.addEventListener('click', ()=> {
+      // fallback
+      setTimeout(()=> location.href='letter.html', 520);
+    });
+  </script>
+</body>
+</html>

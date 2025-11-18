@@ -1,0 +1,65 @@
+<!-- page4.html | Reasons I Love You -->
+<!DOCTYPE html>
+<html>
+
+<head>
+    
+    <meta charset="UTF-8">
+    <title>Reasons 💗</title>
+    <style>
+        body {
+            margin: 0;
+            background: #fff0f7;
+            font-family: 'Poppins';
+            animation: fade 1.2s;
+        }
+
+        @keyframes fade {
+            from {
+                opacity: 0;
+            }
+
+            to {
+                opacity: 1;
+            }
+        }
+
+        .reason {
+            width: 80%;
+            margin: 20px auto;
+            background: white;
+            padding: 20px;
+            border-radius: 20px;
+            font-size: 20px;
+            box-shadow: 0 10px 25px rgba(255, 120, 160, .25);
+            animation: slide .7s;
+        }
+
+        @keyframes slide {
+            from {
+                transform: translateX(-80px);
+                opacity: 0;
+            }
+
+            to {
+                transform: translateX(0);
+                opacity: 1;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <h1 style="text-align:center;padding-top:20px;">Reasons I Love You 💗</h1>
+    <div class="reason">You care even when you pretend not to 💕</div>
+    <div class="reason">Your smile fixes everything ✨</div>
+    <div class="reason">You make the world feel softer 🌸</div>
+    <div class="reason">You’re simply YOU — and that’s perfect 💞</div>
+    <center><button onclick="nextPage()"
+            style="padding:15px 25px;border-radius:50px;background:#ff4f9a;color:white;border:none;font-size:18px;">Next
+            ➜</button></center>
+    <script>function nextPage() { window.location.href = "love.html"; } </script>
+     <script src="script.js"></script>
+</body>
+
+</html>

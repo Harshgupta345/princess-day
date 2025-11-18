@@ -1,0 +1,142 @@
+<!-- page6.html | Infinity Love Meter -->
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Love Meter 💘</title>
+
+    <style>
+        body {
+            margin: 0;
+            background: #ffe2f4;
+            font-family: 'Poppins';
+            text-align: center;
+            animation: fade 1.2s;
+        }
+
+        @keyframes fade {
+            from {
+                opacity: 0;
+            }
+
+            to {
+                opacity: 1;
+            }
+        }
+
+        h1 {
+            font-size: 35px;
+            color: #ff3c94;
+            text-shadow: 0 0 10px #ff9acb;
+            animation: heartBeat 1.8s infinite;
+        }
+
+        @keyframes heartBeat {
+            0% {
+                transform: scale(1);
+            }
+
+            50% {
+                transform: scale(1.08);
+            }
+
+            100% {
+                transform: scale(1);
+            }
+        }
+
+        .meterBox {
+            width: 80%;
+            height: 45px;
+            background: white;
+            margin: 50px auto;
+            border-radius: 30px;
+            box-shadow: 0 10px 30px rgba(255, 120, 160, .35);
+            overflow: hidden;
+            position: relative;
+        }
+
+        .fill {
+            height: 100%;
+            width: 120%;
+            background: linear-gradient(90deg, #ff4f9a, #ff82c7, #ffb7e3);
+            background-size: 200% 100%;
+            animation: flowing 2.5s linear infinite, shine 3s ease-in-out infinite alternate;
+        }
+
+        @keyframes flowing {
+            0% {
+                transform: translateX(-20%);
+            }
+
+            100% {
+                transform: translateX(20%);
+            }
+        }
+
+        @keyframes shine {
+            0% {
+                filter: brightness(1);
+            }
+
+            100% {
+                filter: brightness(1.4);
+            }
+        }
+
+        .btn {
+            padding: 15px 25px;
+            border: none;
+            border-radius: 50px;
+            background: #ff4f9a;
+            color: white;
+            font-size: 18px;
+            cursor: pointer;
+            transition: .3s;
+            box-shadow: 0 10px 20px rgba(255, 80, 150, 0.3);
+        }
+
+        .btn:hover {
+            transform: scale(1.08);
+            box-shadow: 0 12px 30px rgba(255, 80, 150, 0.45);
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1>Infinity Love Meter 💖</h1>
+
+    <div class="meterBox">
+        <div class="fill"></div>
+    </div>
+
+    <button class="btn" onclick="nextPage()">Next ➜</button>
+
+    <script>
+        function nextPage() {
+            window.location.href = "final.html";
+        }
+    </script>
+    <script>
+        const btn = document.getElementById('openBtn');
+        let press;
+        btn.addEventListener('pointerdown', (e) => {
+            spark = setInterval(() => sparkleAt(e.clientX + (Math.random() * 40 - 20), e.clientY + (Math.random() * 40 - 20), 6), 250);
+            btn.animate([{ transform: 'scale(1)' }, { transform: 'scale(1.06)' }, { transform: 'scale(1)' }], { duration: 520 });
+        });
+        btn.addEventListener('pointerup', () => {
+            clearInterval(spark);
+            // go next
+            setTimeout(() => location.href = 'letter.html', 260);
+        });
+        btn.addEventListener('click', () => {
+            // fallback
+            setTimeout(() => location.href = 'letter.html', 520);
+        });
+    </script>
+    <script src="script.js"></script>
+</body>
+
+</html>
